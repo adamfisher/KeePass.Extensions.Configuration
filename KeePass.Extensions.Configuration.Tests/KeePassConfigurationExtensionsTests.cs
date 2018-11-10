@@ -29,10 +29,6 @@ namespace KeePass.Extensions.Configuration.Tests
         public KeePassConfigurationExtensionsTests()
         {
             Builder = new ConfigurationBuilder();
-
-           var builder = new ConfigurationBuilder();
-
-            builder.AddKeePass("Path/To/KeePass.kdbx", useCurrentWindowsAccount: true);
         }
 
         #endregion
