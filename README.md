@@ -72,7 +72,7 @@ builder.AddKeePass("Path/To/KeePass.kdbx",
 
 ### Custom Key & Value Resolvers
 
-By default, **keys** are resolved to be colon separated based on the group hierarchy and title of the entry while **values** is the the value stored in the password field of the entry.
+By default, **keys** are resolved to be colon separated based on the group hierarchy and title of the entry while **values** is the value stored in the password field of the entry.
 
 You can override one or both of the ways a key and value are resolved if there are other fields that make more sense for you. In the following example, we are overriding both the key to only be the title of the entry and the value to be the notes field.
 
