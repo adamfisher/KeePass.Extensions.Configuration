@@ -36,9 +36,9 @@ builder.AddKeePass("Path/To/KeePass.kdbx", useCurrentWindowsAccount: true);
 
 Suppose you have a database called **KeePassTestDatabase.kdbx** containing the following three groups and eight entries along with a master password of `1234`:
 
-<img src="https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/KeePassTestDatabase-Root.PNG" />
-<img src="https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/KeePassTestDatabase-Internet.PNG" />
-<img src="https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/KeePassTestDatabase-DuplicateEntries.PNG" />
+![](https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/KeePassTestDatabase-Root.PNG)
+![](https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/KeePassTestDatabase-Internet.PNG)
+![](https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/KeePassTestDatabase-DuplicateEntries.PNG)
 
 The available keys are based on the `resolveKey` and `resolveValue` delegate functions. See the *Advanced Configuration* section for ways to customize the key/value mappings of entries to configuration.
 
