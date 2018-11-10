@@ -12,8 +12,9 @@
     <RepositoryUrl>https://github.com/adamfisher/KeePass.Extensions.Configuration.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>keepass,configuration,Microsoft.Extensions.Configuration,config</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIconUrl>https://github.com/adamfisher/KeePass.Extensions.Configuration/blob/master/Images/keepass_512x512.png</PackageIconUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageIconUrl>https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/keepass_512x512.png</PackageIconUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
