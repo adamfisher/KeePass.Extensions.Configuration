@@ -19,22 +19,31 @@ namespace KeePass.Extensions.Configuration
         /// <summary>
         /// Adds KeePass configuration source to the <code>builder</code>.
         /// </summary>
-        /// <param name="builder">The builder.</param>
-        /// <param name="path">The path.</param>
+        /// <param name="builder">The configuration builder.</param>
+        /// <param name="path">The path to the KeePass database file (KDBX).</param>
         /// <param name="masterPassword">The master password.</param>
         /// <param name="useCurrentWindowsAccount">if set to <c>true</c> [use current windows account].</param>
-        /// <returns></returns>
-        public static IConfigurationBuilder AddKeePass(this IConfigurationBuilder builder, string path, string masterPassword = null, bool useCurrentWindowsAccount = false)
+        /// <param name="filterEntries">Filter used to narrow the selection of entries loaded by the KeePass configuration provider.</param>
+        /// <param name="resolveKey">The entry mapping to a string value used as the key in configuration lookups.</param>
+        /// <param name="resolveValue">The entry mapping to a string value used as the value in configuration lookups.</param>
+        /// <returns>The same <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder" />.</returns>
+        public static IConfigurationBuilder AddKeePass(this IConfigurationBuilder builder, 
+            string path, 
+            string masterPassword = null, 
+            bool useCurrentWindowsAccount = false, 
+            Func<PwDatabase, IEnumerable<PwEntry>> filterEntries = null,
+            Func<PwEntry, string> resolveKey = null,
+            Func<string, PwEntry, string> resolveValue = null)
         {
             var compositeKey = new CompositeKey();
 
-            if(masterPassword != null)
+            if (masterPassword != null)
                 compositeKey.AddUserKey(new KcpPassword(masterPassword));
 
-            if(useCurrentWindowsAccount)
+            if (useCurrentWindowsAccount)
                 compositeKey.AddUserKey(new KcpUserAccount());
 
-            return builder.AddKeePass(path, compositeKey);
+            return builder.AddKeePass(path, compositeKey, filterEntries: filterEntries, resolveKey: resolveKey, resolveValue: resolveValue);
         }
 
         /// <summary>
