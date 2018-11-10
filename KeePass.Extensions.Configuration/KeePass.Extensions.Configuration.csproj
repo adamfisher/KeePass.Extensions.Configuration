@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Authors>Adam Fisher</Authors>
+    <Company>Octane Software, LLC</Company>
+    <Description>KeePass configuration provider implementation for Microsoft.Extensions.Configuration.</Description>
+    <Copyright>Copyright (C) 2018 Octane Software, LLC</Copyright>
+    <PackageId>KeePass.Extensions.Configuration</PackageId>
+    <PackageProjectUrl>https://github.com/adamfisher/KeePass.Extensions.Configuration</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/adamfisher/KeePass.Extensions.Configuration/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/adamfisher/KeePass.Extensions.Configuration.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>keepass,configuration,Microsoft.Extensions.Configuration,config</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIconUrl>https://github.com/adamfisher/KeePass.Extensions.Configuration/blob/master/Images/keepass_512x512.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.1" />
+    <PackageReference Include="pt.KeePassLibStd" Version="2.39.1.9" />
+  </ItemGroup>
+
+</Project>
