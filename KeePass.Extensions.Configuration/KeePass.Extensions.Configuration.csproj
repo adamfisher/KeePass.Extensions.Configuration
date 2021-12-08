@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Adam Fisher</Authors>
     <Company>Octane Software, LLC</Company>
     <Description>KeePass configuration provider implementation for Microsoft.Extensions.Configuration.</Description>
@@ -14,7 +14,7 @@
     <PackageTags>keepass,configuration,Microsoft.Extensions.Configuration,config</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageIconUrl>https://raw.githubusercontent.com/adamfisher/KeePass.Extensions.Configuration/master/Images/keepass_512x512.png</PackageIconUrl>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

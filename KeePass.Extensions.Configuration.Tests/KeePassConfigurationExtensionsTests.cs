@@ -3,6 +3,7 @@ using KeePassLib.Keys;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace KeePass.Extensions.Configuration.Tests
@@ -35,17 +36,22 @@ namespace KeePass.Extensions.Configuration.Tests
 
         #region Tests
 
-        [Fact]
-        public void AddKeePass_MapsKdbxPathToConnection()
+        [Theory]
+        [InlineData("KeePassTestDatabase.kdbx")]
+        [InlineData("../../../KeePassTestDatabase.kdbx")]
+        public void AddKeePass_MapsKdbxPathToConnection(string path)
         {
-            Builder.AddKeePass("KeePassTestDatabase.kdbx");
+            Builder.AddKeePass(path);
 
             Builder.Sources.Should().NotBeEmpty();
             Builder.Sources.First().Should().BeOfType<KeePassConfigurationSource>();
 
             var keePassSource = (KeePassConfigurationSource)Builder.Sources.First();
-            keePassSource.Path.Should().BeEquivalentTo("KeePassTestDatabase.kdbx");
-            keePassSource.Connection.Path.Should().BeEquivalentTo("KeePassTestDatabase.kdbx");
+            keePassSource.Path.Should().BeEquivalentTo(path);
+            keePassSource.Connection.Path.Should().BeEquivalentTo(path);
+
+            var provider = new KeePassConfigurationProvider(keePassSource);
+            provider.Invoking(x => x.Load()).Should().Throw<InvalidCompositeKeyException>();
         }
 
         [Fact]
@@ -61,9 +67,14 @@ namespace KeePass.Extensions.Configuration.Tests
         [Fact]
         public void AddKeePass_WithWindowsAccount()
         {
-            Builder.AddKeePass("KeePassTestDatabase.kdbx", useCurrentWindowsAccount: true);
-            var keePassSource = (KeePassConfigurationSource)Builder.Sources.First();
-            keePassSource.CompositeKey.GetUserKey(typeof(KcpUserAccount)).Should().NotBeNull();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Builder.AddKeePass("KeePassTestDatabase.kdbx", useCurrentWindowsAccount: true);
+                var keePassSource = (KeePassConfigurationSource)Builder.Sources.First();
+                keePassSource.CompositeKey.GetUserKey(typeof(KcpUserAccount)).Should().NotBeNull();
+            }
+
+            Assert.True(true);
         }
 
         #endregion

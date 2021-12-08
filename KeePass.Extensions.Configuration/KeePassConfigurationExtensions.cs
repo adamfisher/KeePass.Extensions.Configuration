@@ -75,7 +75,6 @@ namespace KeePass.Extensions.Configuration
             if (provider == null && Path.IsPathRooted(path))
             {
                 provider = new PhysicalFileProvider(Path.GetDirectoryName(path));
-                path = Path.GetFileName(path);
             }
 
             connection = connection ?? new IOConnectionInfo { Path = path };
